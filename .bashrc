@@ -119,26 +119,26 @@ MYIP=$(wget -qO- ipv4.icanhazip.com)
 #echo -e $green' ☠>_________________'
 clear
 	
-echo ""| lolcat
-echo ""| lolcat
-echo ""| lolcat
-echo "         -------[SELAMAT DATANG DI VPS ZHANG-ZI]-------"| boxes -d cat | lolcat
-echo "        ====================================================="| lolcat
-echo "        #           WhatsApp     : 60146309176              #"| lolcat
-echo "        #           Telegram     : CyberSS                  #"| lolcat
-echo "        #           Facebook     : fb.com/team-hecker       #"| lolcat
-echo "        #           Pin-BBM      : zhang-zi                 #"| lolcat
-echo "        #                                                   #"| lolcat
-echo "        #   Silahkan ketik menu lalu ENTER untuk pilihan    #"| lolcat
-echo "        #                                                   #"| lolcat
-echo "        #        Copyright # yusuf-ardiansyah               #"| lolcat
-echo "        #                  # deenie siswanto                #"| lolcat
-echo "        #                  # zhangzi                        #"| lolcat 
-echo "        ====================================================="| lolcat
-date +"                    %A, %d-%m-%Y" | lolcat
-date +"                            %H:%M:%S %Z" | lolcat
 echo ""
-echo -e "        Server - IP: $MYIP " | lolcat
+echo ""
+echo ""
+echo "         -------[SELAMAT DATANG DI VPS ZHANG-ZI]-------"
+echo "        ====================================================="
+echo "        #           WhatsApp     : 60146309176              #"
+echo "        #           Telegram     : DENBAGUSS                #"
+echo "        #           Facebook     : fb.com/team-hecker       #"
+echo "        #           Pin-BBM      : zhang-zi                 #"
+echo "        #                                                   #"
+echo "        #   Silahkan ketik menu lalu ENTER untuk pilihan    #"
+echo "        #                                                   #"
+echo "        #        Copyright # yusuf-ardiansyah               #"
+echo "        #                  # deenie siswanto                #"
+echo "        #                  # zhangzi                        #"
+echo "        ====================================================="
+date +"                    %A, %d-%m-%Y" 
+date +"                            %H:%M:%S %Z" 
+echo ""
+echo -e "        Server - IP: $MYIP " 
 echo ""
 	cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
 	cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
@@ -147,12 +147,12 @@ echo ""
 	swap=$( free -m | awk 'NR==4 {print $2}' )
 	up=$(uptime|awk '{ $1=$2=$(NF-6)=$(NF-5)=$(NF-4)=$(NF-3)=$(NF-2)=$(NF-1)=$NF=""; print }')
 
-echo -e "        \e[032;1mCPU model:\e[0m $cname" | lolcat
-echo -e "        \e[032;1mNumber of cores:\e[0m $cores" | lolcat
-echo -e "        \e[032;1mCPU frequency:\e[0m $freq MHz"| lolcat
-echo -e "        \e[032;1mTotal amount of ram:\e[0m $tram MB" | lolcat
-echo -e "        \e[032;1mTotal amount of swap:\e[0m $swap MB" | lolcat
-echo -e "        \e[032;1mSystem uptime:\e[0m $up" | lolcat
+echo -e "        \e[032;1mCPU model:\e[0m $cname" 
+echo -e "        \e[032;1mNumber of cores:\e[0m $cores" 
+echo -e "        \e[032;1mCPU frequency:\e[0m $freq MHz"
+echo -e "        \e[032;1mTotal amount of ram:\e[0m $tram MB" 
+echo -e "        \e[032;1mTotal amount of swap:\e[0m $swap MB" 
+echo -e "        \e[032;1mSystem uptime:\e[0m $up" 
 echo ""
-echo "------------------------------------------------------------------------" | lolcat
+echo "------------------------------------------------------------------------" 
 echo ""
