@@ -124,12 +124,6 @@ cd
 cd
 rm -rf /root/.bashrc
 wget -O /root/.bashrc $source/debian7/.bashrc
-
-#text gambar
-apt-get install boxes
-# text pelangi
-sudo apt-get install ruby -y
-sudo gem install lolcat
  
 # install webserver
 cd
