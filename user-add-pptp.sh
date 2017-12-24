@@ -27,9 +27,9 @@ echo "$username pptpd $password *" >> /etc/ppp/chap-secrets
 
 echo ""
 echo "-----------------------------------"
-echo "INFORMASI AKUN PPTP VPN:"  | lolcat
+echo "INFORMASI AKUN PPTP VPN:"  
 echo "-----------------------------------"
-echo "Host/IP: $MYIP"  | lolcat
-echo "Username: $username"  | lolcat
-echo "Password: $password"  | lolcat
+echo "Host/IP: $MYIP"  
+echo "Username: $username"  
+echo "Password: $password"  
 echo "-----------------------------------"
