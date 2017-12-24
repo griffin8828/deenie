@@ -14,14 +14,14 @@ if [ "$MYIP" = "" ]; then
 fi
 #MYIP=$(wget -qO- ipv4.icanhazip.com)
 
-echo "--------------------------- GANTI PASSWORD  AKUN SSH ---------------------------" | lolcat
+echo "--------------------------- GANTI PASSWORD  AKUN SSH ---------------------------" 
 
-	echo "            DEVELOPED BY YUSUF ARDIANSYAH n ELANG OVERDOSIS            " | lolcat
+	echo "            DEVELOPED BY YUSUF ARDIANSYAH n ELANG OVERDOSIS            " 
 echo ""
 
 # begin of user-list
 echo "-----------------------------------"
-echo "USERNAME              EXP DATE     " | lolcat
+echo "USERNAME              EXP DATE     " 
 echo "-----------------------------------"
 
 while read expired
@@ -33,7 +33,7 @@ do
 		printf "%-21s %2s\n" "$AKUN" "$exp"
 	fi
 done < /etc/passwd
-echo "-----------------------------------" | lolcat
+echo "-----------------------------------" 
 echo ""
 # end of user-list
 
@@ -49,12 +49,13 @@ if [ $? -eq 0 ]; then
 		echo "Penggantian password akun [$username] Sukses"
 		echo ""
 		echo "-----------------------------------"
-		echo "Data Login:" | lolcat
+		echo "Data Login:"
 		echo "-----------------------------------"
-		echo "Host/IP: $MYIP" | lolcat
-		echo "Dropbear Port: 443, 80" | lolcat
-		echo "OpenSSH Port: 22, 143" | lolcat
-		echo "Squid Proxy: 8080, 3128" | lolcat
+		echo "Host/IP: $MYIP" 
+		echo "Dropbear Port: 777, 80"
+		echo "SSL/TSL  port: 443"
+		echo "OpenSSH Port: 22, 143" 
+		echo "Squid Proxy: 8080, 3128" 
 		echo "OpenVPN Config: http://$MYIP:81/client.ovpn" | lolcat
 		echo "Username: $username" | lolcat
 		echo "Password: $password" | lolcat
