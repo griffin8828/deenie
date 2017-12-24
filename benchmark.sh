@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source="https://raw.githubusercontent.com/elangoverdosis88/deenie"
+source="https://raw.githubusercontent.com/griffin8828/deenie"
  
 
 # go to root
