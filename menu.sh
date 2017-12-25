@@ -200,7 +200,7 @@ User Sudah Bisa Multi Login Lagi!!!"
 	;;
 	"Penggunaan Ram")
 	clear
-	ps-mem  | lolcat
+	ps-mem  
 	break
 	;;
 	"Speedtest")
