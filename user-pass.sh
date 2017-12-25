@@ -52,13 +52,13 @@ if [ $? -eq 0 ]; then
 		echo "Data Login:"
 		echo "-----------------------------------"
 		echo "Host/IP: $MYIP" 
-		echo "Dropbear Port: 777, 80"
+		echo "Dropbear Port: 777, 442"
 		echo "SSL/TSL  port: 443"
 		echo "OpenSSH Port: 22, 143" 
 		echo "Squid Proxy: 8080, 3128" 
-		echo "OpenVPN Config: http://$MYIP:81/client.ovpn" | lolcat
-		echo "Username: $username" | lolcat
-		echo "Password: $password" | lolcat
+		echo "OpenVPN Config: http://$MYIP:81/client.ovpn" 
+		echo "Username: $username" 
+		echo "Password: $password" 
 		#echo "Valid s/d: $(date -d "$AKTIF days" +"%d-%m-%Y")"
 		echo "-----------------------------------"
 	else
