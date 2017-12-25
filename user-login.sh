@@ -53,7 +53,7 @@ done
 #echo "";
 
 #echo "-----------------------------------"
-#echo "Checking OpenVPN login" | lolcat;
+#echo "Checking OpenVPN login" 
 #echo "-----------------------------------"
 #tail -f /etc/openvpn/server-vpn.log
 
