@@ -229,6 +229,11 @@ sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 81 -j ACCEPT' /etc/rc.local
 sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 109 -j ACCEPT' /etc/rc.local
 sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 110 -j ACCEPT' /etc/rc.local
 sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 143 -j ACCEPT' /etc/rc.local
+sed -i '$ i\iptables -A OUTPUT -p udp -m udp --dport 443 -j ACCEPT' /etc/rc.local
+sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 777 -j ACCEPT' /etc/rc.local
+sed -i '$ i\iptables -A OUTPUT -p udp -m udp --dport 777 -j ACCEPT' /etc/rc.local
+sed -i '$ i\iptables -A OUTPUT -p udp -m udp --dport 442 -j ACCEPT' /etc/rc.local
+sed -i '$ i\iptables -A OUTPUT -p udp -m udp --dport 80 -j ACCEPT' /etc/rc.local
 sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 443 -j ACCEPT' /etc/rc.local
 sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 442 -j ACCEPT' /etc/rc.local
 sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp --dport 1194 -j ACCEPT' /etc/rc.local
