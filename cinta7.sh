@@ -80,7 +80,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list $source/debian7/sources.list.debian7
+wget -O /etc/apt/sources.list $source/debian7/sources.list.debian8
 wget http://www.dotdeb.org/dotdeb.gpg
 wget http://www.webmin.com/jcameron-key.asc
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
@@ -184,8 +184,9 @@ sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 442"/g' /etc/default/drop
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 sed -i 's/DROPBEAR_BANNER=""/DROPBEAR_BANNER="bannerssh"/g' /etc/default/dropbear
+/etc/init.d/dropbear restart
 service ssh restart
-service dropbear restart
+
 # bannerssh
 wget $source/debian7/bannerssh
 mv ./bannerssh /bannerssh
@@ -194,15 +195,15 @@ service dropbear restart
 service ssh restart
 
 # upgade dropbear 2016.74
-apt-get install zlib1g-dev
-wget $source/debian7/dropbear-2016.74.tar.bz2
-bzip2 -cd dropbear-2016.74.tar.bz2 | tar xvf -
-cd dropbear-2016.74
-./configure
-make && make install
-mv /usr/sbin/dropbear /usr/sbin/dropbear.old
-ln /usr/local/sbin/dropbear /usr/sbin/dropbear
-cd && rm -rf dropbear-2016.74 && rm -rf dropbear-2016.74.tar.bz2
+#apt-get install zlib1g-dev
+#wget $source/debian7/dropbear-2016.74.tar.bz2
+#bzip2 -cd dropbear-2016.74.tar.bz2 | tar xvf -
+#cd dropbear-2016.74
+#./configure
+#make && make install
+#mv /usr/sbin/dropbear /usr/sbin/dropbear.old
+#ln /usr/local/sbin/dropbear /usr/sbin/dropbear
+#cd && rm -rf dropbear-2016.74 && rm -rf dropbear-2016.74.tar.bz2
 
 # install vnstat gui
 #cd /home/vps/public_html/
