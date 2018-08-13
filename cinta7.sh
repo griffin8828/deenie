@@ -82,9 +82,9 @@ service ssh restart
 # set repo
 wget -O /etc/apt/sources.list $source/debian7/sources.list.debian8
 wget http://www.dotdeb.org/dotdeb.gpg
-wget http://www.webmin.com/jcameron-key.asc
+#wget http://www.webmin.com/jcameron-key.asc
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
-cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
+#cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
 # remove unused
 apt-get -y --purge remove samba*;
@@ -116,8 +116,8 @@ sysv-rc-conf exim4 off
 apt-file update
 
 # setting vnstat
-#vnstat -u -i $ether
-#service vnstat restart
+vnstat -u -i $ether
+service vnstat restart
 cd
 
 # text wrn
@@ -150,23 +150,23 @@ screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
 cd
 
 # install mrtg
-#apt-get update;apt-get -y install snmpd;
-#wget -O /etc/snmp/snmpd.conf $source/debian7/snmpd.conf
-#wget -O /root/mrtg-mem.sh $source/debian7/mrtg-mem.sh
-#chmod +x /root/mrtg-mem.sh
-#cd /etc/snmp/
-#sed -i 's/TRAPDRUN=no/TRAPDRUN=yes/g' /etc/default/snmpd
-#service snmpd restart
-#snmpwalk -v 1 -c public localhost 1.3.6.1.4.1.2021.10.1.3.1
-#mkdir -p /home/vps/public_html/mrtg
-#cfgmaker --zero-speed 100000000 --global 'WorkDir: /home/vps/public_html/mrtg' --output /etc/mrtg.cfg public@localhost
-#curl $source/debian7/mrtg.conf >> /etc/mrtg.cfg
-#sed -i 's/WorkDir: \/var\/www\/mrtg/# WorkDir: \/var\/www\/mrtg/g' /etc/mrtg.cfg
-#sed -i 's/# Options\[_\]: growright, bits/Options\[_\]: growright/g' /etc/mrtg.cfg
-#indexmaker --output=/home/vps/public_html/mrtg/index.html /etc/mrtg.cfg
-#if [ -x /usr/bin/mrtg ] && [ -r /etc/mrtg.cfg ]; then mkdir -p /var/log/mrtg ; env LANG=C /usr/bin/mrtg /etc/mrtg.cfg 2>&1 | tee -a /var/log/mrtg/mrtg.log ; fi
-#if [ -x /usr/bin/mrtg ] && [ -r /etc/mrtg.cfg ]; then mkdir -p /var/log/mrtg ; env LANG=C /usr/bin/mrtg /etc/mrtg.cfg 2>&1 | tee -a /var/log/mrtg/mrtg.log ; fi
-#if [ -x /usr/bin/mrtg ] && [ -r /etc/mrtg.cfg ]; then mkdir -p /var/log/mrtg ; env LANG=C /usr/bin/mrtg /etc/mrtg.cfg 2>&1 | tee -a /var/log/mrtg/mrtg.log ; fi
+apt-get update;apt-get -y install snmpd;
+wget -O /etc/snmp/snmpd.conf $source/debian7/snmpd.conf
+wget -O /root/mrtg-mem.sh $source/debian7/mrtg-mem.sh
+chmod +x /root/mrtg-mem.sh
+cd /etc/snmp/
+sed -i 's/TRAPDRUN=no/TRAPDRUN=yes/g' /etc/default/snmpd
+service snmpd restart
+snmpwalk -v 1 -c public localhost 1.3.6.1.4.1.2021.10.1.3.1
+mkdir -p /home/vps/public_html/mrtg
+cfgmaker --zero-speed 100000000 --global 'WorkDir: /home/vps/public_html/mrtg' --output /etc/mrtg.cfg public@localhost
+curl $source/debian7/mrtg.conf >> /etc/mrtg.cfg
+sed -i 's/WorkDir: \/var\/www\/mrtg/# WorkDir: \/var\/www\/mrtg/g' /etc/mrtg.cfg
+sed -i 's/# Options\[_\]: growright, bits/Options\[_\]: growright/g' /etc/mrtg.cfg
+indexmaker --output=/home/vps/public_html/mrtg/index.html /etc/mrtg.cfg
+if [ -x /usr/bin/mrtg ] && [ -r /etc/mrtg.cfg ]; then mkdir -p /var/log/mrtg ; env LANG=C /usr/bin/mrtg /etc/mrtg.cfg 2>&1 | tee -a /var/log/mrtg/mrtg.log ; fi
+if [ -x /usr/bin/mrtg ] && [ -r /etc/mrtg.cfg ]; then mkdir -p /var/log/mrtg ; env LANG=C /usr/bin/mrtg /etc/mrtg.cfg 2>&1 | tee -a /var/log/mrtg/mrtg.log ; fi
+if [ -x /usr/bin/mrtg ] && [ -r /etc/mrtg.cfg ]; then mkdir -p /var/log/mrtg ; env LANG=C /usr/bin/mrtg /etc/mrtg.cfg 2>&1 | tee -a /var/log/mrtg/mrtg.log ; fi
 cd
 
 # setting port ssh
@@ -206,17 +206,17 @@ service ssh restart
 #cd && rm -rf dropbear-2016.74 && rm -rf dropbear-2016.74.tar.bz2
 
 # install vnstat gui
-#cd /home/vps/public_html/
-#wget $source/debian7/vnstat_php_frontend-1.5.1.tar.gz
-#tar xvfz vnstat_php_frontend-1.5.1.tar.gz
-#rm vnstat_php_frontend-1.5.1.tar.gz
-#mv vnstat_php_frontend-1.5.1 vnstat
-#cd vnstat
-#sed -i "s/eth0/$ether/g" config.php
-#sed -i "s/\$iface_list = array('venet0', 'sixxs');/\$iface_list = array($ether);/g" config.php
-#sed -i "s/\$language = 'nl';/\$language = 'en';/g" config.php
-#sed -i 's/Internal/Internet/g' config.php
-#sed -i '/SixXS IPv6/d' config.php
+cd /home/vps/public_html/
+wget $source/debian7/vnstat_php_frontend-1.5.1.tar.gz
+tar xvfz vnstat_php_frontend-1.5.1.tar.gz
+rm vnstat_php_frontend-1.5.1.tar.gz
+mv vnstat_php_frontend-1.5.1 vnstat
+cd vnstat
+sed -i "s/eth0/$ether/g" config.php
+sed -i "s/\$iface_list = array('venet0', 'sixxs');/\$iface_list = array($ether);/g" config.php
+sed -i "s/\$language = 'nl';/\$language = 'en';/g" config.php
+sed -i 's/Internal/Internet/g' config.php
+sed -i '/SixXS IPv6/d' config.php
 cd
 
 # block all port except
@@ -347,10 +347,10 @@ chmod +x /usr/bin/bannermenu
 chmod +x /usr/bin/menu-update-script-vps.sh
 chmod 777 /usr/bin/vpnmon
 cd
-wget $source/debian7/instalshc.sh
-chmod +x /root/instalshc.sh
-/root/instalshc.sh
-rm /root/instalshc.sh
+#wget $source/debian7/instalshc.sh
+#chmod +x /root/instalshc.sh
+#/root/instalshc.sh
+#rm /root/instalshc.sh
 
 # swap ram
 dd if=/dev/zero of=/swapfile bs=1024 count=4096k
