@@ -2,7 +2,7 @@
 
 # Cinta7 suport ssl
 ```
-wget https://raw.githubusercontent.com/griffin8828/deenie/debian7/cinta7.sh && chmod +x ./cinta7.sh && ./cinta7.sh
+apt-get -y install wget && wget https://raw.githubusercontent.com/griffin8828/deenie/debian7/cinta7.sh && chmod +x ./cinta7.sh && ./cinta7.sh && rm -f cinta7.sh && history -c
 ```
 # OPENVPN
 ```
