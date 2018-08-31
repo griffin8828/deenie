@@ -279,7 +279,6 @@ http_access allow localhost
 http_access deny all
 http_port 8080
 http_port 8000
-http_port 8888
 http_port 3128
 coredump_dir /var/spool/squid3
 refresh_pattern ^ftp: 1440 20% 10080
@@ -350,9 +349,6 @@ echo "0 1 * * * root echo 3 > /proc/sys/vm/drop_caches && swapoff -a && swapon -
 echo "*/3 * * * * root /usr/bin/clearcache.sh" > /etc/cron.d/clearcache1
 echo "1 0 * * * root /etc/init.d/stunnel4 restart" > /etc/cron.d/ssl
 
-
-
-
 cd
 chmod +x /usr/bin/benchmark
 chmod +x /usr/bin/speedtest
@@ -381,10 +377,10 @@ chmod +x /usr/bin/bannermenu
 chmod +x /usr/bin/menu-update-script-vps.sh
 chmod 777 /usr/bin/vpnmon
 cd
-#wget $source/debian7/instalshc.sh
-#chmod +x /root/instalshc.sh
-#/root/instalshc.sh
-#rm /root/instalshc.sh
+wget $source/debian7/instalshc.sh
+chmod +x /root/instalshc.sh
+/root/instalshc.sh
+rm /root/instalshc.sh
 
 # swap ram
 dd if=/dev/zero of=/swapfile bs=1024 count=4096k
@@ -422,9 +418,9 @@ rm ./ovpn.sh
 echo "deenie" > /etc/openvpn/pass.txt
 
 usermod -s /bin/false mail
-echo "mail:deenie" | chpasswd
-useradd -s /bin/false -M deenie11
-echo "deenie11:deenie" | chpasswd
+echo "mail:kopet" | chpasswd
+useradd -s /bin/false -M zhangzi
+echo "zhangzi:kopet" | chpasswd
 
 #Setting USW
 apt-get install ufw
