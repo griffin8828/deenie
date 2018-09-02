@@ -103,8 +103,8 @@ apt-get -y install zip tar
 apt-get install python
 cd
 # install essential package
-#echo "mrtg mrtg/conf_mods boolean true" | debconf-set-selections
-#apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
+echo "mrtg mrtg/conf_mods boolean true" | debconf-set-selections
+apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs openvpn vnstat less screen psmisc apt-file whois ptunnel ngrep mtr git zsh mrtg snmp snmpd snmp-mibs-downloader unzip unrar rsyslog debsums rkhunter
 apt-get -y install bmon iftop htop nmap axel nano iptables traceroute sysv-rc-conf dnsutils bc nethogs less screen psmisc apt-file whois ptunnel ngrep mtr git zsh unzip unrar rsyslog debsums rkhunter
 apt-get -y install build-essential
 
@@ -179,7 +179,7 @@ service ssh restart
 apt-get -y update
 apt-get install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=80/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=777/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
@@ -198,10 +198,10 @@ ln /usr/local/sbin/dropbear /usr/sbin/dropbear
 cd && rm -rf dropbear-2016.74 && rm -rf dropbear-2016.74.tar.bz2
 
 # install squid3
-apt-get -y install squid3
-wget -O /etc/squid3/squid.conf $source/debian7/squid3.conf
-sed -i $MYIP2 /etc/squid3/squid.conf;
-service squid3 restart
+#apt-get -y install squid3
+#wget -O /etc/squid3/squid.conf $source/debian7/squid3.conf
+#sed -i $MYIP2 /etc/squid3/squid.conf;
+#service squid3 restart
 
 # bannerssh
 wget $source/debian7/bannerssh
@@ -256,40 +256,42 @@ sed -i '$ i\iptables -A OUTPUT -p tcp -m tcp -j DROP' /etc/rc.local
 # install fail2ban
 apt-get update;apt-get -y install fail2ban;service fail2ban restart
 
-#apt-get -y install squid3
-#cat > /etc/squid3/squid.conf <<-END
-#acl localhost src 127.0.0.1/32 ::1
-#acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
-#acl SSL_ports port 443
-#acl Safe_ports port 80
-#acl Safe_ports port 21
-#acl Safe_ports port 443
-#acl Safe_ports port 70
-#acl Safe_ports port 210
-#acl Safe_ports port 1025-65535
-#acl Safe_ports port 280
-#acl Safe_ports port 488
-#acl Safe_ports port 591
-#acl Safe_ports port 777
-#acl CONNECT method CONNECT
-#acl SSH dst xxxxxxxxx-xxxxxxxxx/32
-#http_access allow SSH
-#http_access allow manager localhost
-#http_access deny manager
-#http_access allow localhost
-#http_access deny all
-#http_port 8080
-#http_port 8000
-#http_port 3128
-#coredump_dir /var/spool/squid3
-#refresh_pattern ^ftp: 1440 20% 10080
-#refresh_pattern ^gopher: 1440 0% 1440
-#refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
-#refresh_pattern . 0 20% 4320
-#visible_hostname denbaguss
-#END
-#sed -i $MYIP2 /etc/squid3/squid.conf;
-#service squid3 restart
+# install squid3
+apt-get -y install squid3
+cat > /etc/squid3/squid.conf <<-END
+acl localhost src 127.0.0.1/32 ::1
+acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
+acl SSL_ports port 443
+acl Safe_ports port 80
+acl Safe_ports port 21
+acl Safe_ports port 443
+acl Safe_ports port 70
+acl Safe_ports port 210
+acl Safe_ports port 1025-65535
+acl Safe_ports port 280
+acl Safe_ports port 488
+acl Safe_ports port 591
+acl Safe_ports port 777
+acl CONNECT method CONNECT
+acl SSH dst xxxxxxxxx-xxxxxxxxx/32
+http_access allow SSH
+http_access allow manager localhost
+http_access deny manager
+http_access allow localhost
+http_access deny all
+http_port 8080
+http_port 8000
+http_port 80
+http_port 3128
+coredump_dir /var/spool/squid3
+refresh_pattern ^ftp: 1440 20% 10080
+refresh_pattern ^gopher: 1440 0% 1440
+refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
+refresh_pattern . 0 20% 4320
+visible_hostname denbaguss
+END
+sed -i $MYIP2 /etc/squid3/squid.conf;
+service squid3 restart
 
 # install webmin
 cd
