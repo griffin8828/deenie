@@ -448,8 +448,6 @@ chown -R www-data:www-data /home/vps/public_html
 service cron restart
 service nginx start
 service php5-fpm start
-service vnstat restart
-service snmpd restart
 service ssh restart
 service dropbear restart
 service fail2ban restart
