@@ -179,7 +179,7 @@ service ssh restart
 apt-get -y update
 apt-get install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=80/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=777/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
@@ -187,15 +187,15 @@ sed -i 's/DROPBEAR_BANNER=""/DROPBEAR_BANNER="bannerssh"/g' /etc/default/dropbea
 /etc/init.d/dropbear restart
 
 # upgade dropbear 2016.74
-apt-get install zlib1g-dev
-wget $source/debian7/dropbear-2016.74.tar.bz2
-bzip2 -cd dropbear-2016.74.tar.bz2 | tar xvf -
-cd dropbear-2016.74
-./configure
-make && make install
-mv /usr/sbin/dropbear /usr/sbin/dropbear.old
-ln /usr/local/sbin/dropbear /usr/sbin/dropbear
-cd && rm -rf dropbear-2016.74 && rm -rf dropbear-2016.74.tar.bz2
+#apt-get install zlib1g-dev
+#wget $source/debian7/dropbear-2016.74.tar.bz2
+#bzip2 -cd dropbear-2016.74.tar.bz2 | tar xvf -
+#cd dropbear-2016.74
+#./configure
+#make && make install
+#mv /usr/sbin/dropbear /usr/sbin/dropbear.old
+#ln /usr/local/sbin/dropbear /usr/sbin/dropbear
+#cd && rm -rf dropbear-2016.74 && rm -rf dropbear-2016.74.tar.bz2
 
 # install squid3
 #apt-get -y install squid3
@@ -280,6 +280,7 @@ http_access deny manager
 http_access allow localhost
 http_access deny all
 http_port 8080
+http_port 80
 http_port 3128
 coredump_dir /var/spool/squid3
 refresh_pattern ^ftp: 1440 20% 10080
