@@ -393,38 +393,38 @@ iptables-restore < /etc/iptables.up.rules
 echo -e "[${green}DONE${noclr}]"
 
  # command script
-# wget -O /usr/bin/menu "$PWD/functions/main_menu.sh"
-# wget -O /usr/bin/01 "$PWD/functions/trial_account.sh"
-# wget -O /usr/bin/02 "$PWD/functions/create_account.sh"
-# wget -O /usr/bin/03 "$PWD/functions/renew_account.sh"
-# wget -O /usr/bin/04 "$PWD/functions/change_password.sh"
-# wget -O /usr/bin/05 "$PWD/functions/lock_account.sh"
-# wget -O /usr/bin/06 "$PWD/functions/unlock_account.sh"
-# wget -O /usr/bin/07 "$PWD/functions/delete_account.sh"
-# wget -O /usr/bin/08 "$PWD/functions/list_account.sh" #Error!
-# wget -O /usr/bin/09 "$PWD/functions/online_account.sh" #Error!
-# wget -O /usr/bin/10 "$PWD/functions/speedtest_cli.py"
-# wget -O /usr/bin/11 "$PWD/functions/system_info.sh"
-#
-# chmod +x /usr/bin/menu
-# chmod +x /usr/bin/01
-# chmod +x /usr/bin/02
-# chmod +x /usr/bin/03
-# chmod +x /usr/bin/04
-# chmod +x /usr/bin/05
-# chmod +x /usr/bin/06
-# chmod +x /usr/bin/07
-# chmod +x /usr/bin/08
-# chmod +x /usr/bin/09
-# chmod +x /usr/bin/10
-# chmod +x /usr/bin/11
+ wget -O /usr/bin/menu "$PWD/functions/main_menu.sh"
+ wget -O /usr/bin/01 "$PWD/functions/trial_account.sh"
+ wget -O /usr/bin/02 "$PWD/functions/create_account.sh"
+ wget -O /usr/bin/03 "$PWD/functions/renew_account.sh"
+ wget -O /usr/bin/04 "$PWD/functions/change_password.sh"
+ wget -O /usr/bin/05 "$PWD/functions/lock_account.sh"
+ wget -O /usr/bin/06 "$PWD/functions/unlock_account.sh"
+ wget -O /usr/bin/07 "$PWD/functions/delete_account.sh"
+ wget -O /usr/bin/08 "$PWD/functions/list_account.sh" #Error!
+ wget -O /usr/bin/09 "$PWD/functions/online_account.sh" #Error!
+ wget -O /usr/bin/10 "$PWD/functions/speedtest_cli.py"
+ wget -O /usr/bin/11 "$PWD/functions/system_info.sh"
+
+ chmod +x /usr/bin/menu
+ chmod +x /usr/bin/01
+ chmod +x /usr/bin/02
+ chmod +x /usr/bin/03
+ chmod +x /usr/bin/04
+ chmod +x /usr/bin/05
+ chmod +x /usr/bin/06
+ chmod +x /usr/bin/07
+ chmod +x /usr/bin/08
+ chmod +x /usr/bin/09
+ chmod +x /usr/bin/10
+ chmod +x /usr/bin/11
 
 # restart pakages service
 apt-get -qqy autoremove
 service ssh restart
 service openvpn restart
 service dropbear restart
-service squid3 restart
+systemctl restart squid.service
 service badvpn-udpgw restart
 service stunnel4 restart
 service fail2ban restart
