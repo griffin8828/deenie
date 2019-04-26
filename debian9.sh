@@ -120,8 +120,14 @@ ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
 echo 1 > /proc/sys/net/ipv4/ip_forward
 sed -i 's|#net.ipv4.ip_forward=1|net.ipv4.ip_forward=1|' /etc/sysctl.conf
-
 cd
+# install webmin
+wget "https://raw.githubusercontent.com/wangzki03/premscript/master/webmin_1.801_all.deb"
+dpkg --install webmin_1.801_all.deb;
+apt-get -y -f install;
+sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
+rm /root/webmin_1.801_all.deb
+service webmin restart
 
 # dropbear
 echo -n "Installing dropbear package... "
